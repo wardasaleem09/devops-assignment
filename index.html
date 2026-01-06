@@ -1,0 +1,224 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps CI/CD Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 5px solid #667eea;
+        }
+        .student-name {
+            font-size: 1.8em;
+            color: #333;
+            margin: 0;
+        }
+        .project-title {
+            color: #666;
+            margin: 5px 0 0 0;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .tech-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .tech-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .pipeline-flow {
+            background: #e8f4ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .timestamp {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 DevOps CI/CD Pipeline</h1>
+            <p class="subtitle">Complete Automation Implementation</p>
+        </div>
+
+        <div class="student-info">
+            <h2 class="student-name">Warda Saleem</h2>
+            <p class="project-title">DevOps Engineering Project</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon">☁️</div>
+                <h3>AWS EC2</h3>
+                <p>Cloud Infrastructure</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">⚙️</div>
+                <h3>Jenkins</h3>
+                <p>Automation Server</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🔍</div>
+                <h3>SonarQube</h3>
+                <p>Code Quality</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🐳</div>
+                <h3>Docker</h3>
+                <p>Containerization</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">📦</div>
+                <h3>GitHub</h3>
+                <p>Source Control</p>
+            </div>
+        </div>
+
+        <div class="pipeline-flow">
+            <h3 style="margin-top: 0;">📊 Pipeline Flow</h3>
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Code Commit</strong>
+                    <p>Developer pushes code to GitHub repository</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Auto Trigger</strong>
+                    <p>Jenkins detects changes and starts pipeline</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Quality Check</strong>
+                    <p>SonarQube analyzes code for bugs & vulnerabilities</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Build & Deploy</strong>
+                    <p>Docker builds container and deploys application</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>Live Website</strong>
+                    <p>Application automatically goes live on server</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timestamp">
+            <p><strong>Last Deployment:</strong> <span id="currentTime"></span></p>
+            <p><small>Auto-refreshes every 30 seconds</small></p>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = 
+                now.toLocaleString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Auto-refresh page every 30 seconds
+        setTimeout(() => {
+            location.reload();
+        }, 30000);
+    </script>
+</body>
+</html>
